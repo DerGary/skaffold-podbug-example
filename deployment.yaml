@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: toolbox
+spec:
+  containers:
+  - name: toolbox
+    image: alpine:latest
+    imagePullPolicy: IfNotPresent
+    command: [ "tail", "-f", "/dev/null" ] # let the container running in the background without doing something
+  terminationGracePeriodSeconds: 0 # terminate instantly, as tail does not exit, it would otherwhise wait 30 seconds for termination
